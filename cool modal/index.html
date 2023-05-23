@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cool modal</title>
+
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap');
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            height: 100%;
+            background-color: #1e1e1e;
+            transition: all .2s;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        .stuff {
+            display: flex;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        #button {
+            z-index: 9999999;
+            position: relative;
+        }
+
+        .modal {
+            transition-duration: .2s;
+            background: #2B2B2B;
+            border: .8px solid #3C3C3C;
+            box-shadow: 0 8px 25px #000;
+            border-radius: 12px;
+            max-width: 570px;
+            min-height: 85px;
+            overflow: hidden;
+            padding: 20px;
+            font-family: 'Rubik',sans-serif;
+            width: 370px;
+            color: white;
+            padding-bottom: 85px;
+            font-size: 16px;
+            position: relative;
+            scale: 1.5;
+            opacity: 0;
+            z-index: -1;
+        }
+
+        [dialog_bottom] {
+            height: 50px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #202020;
+            border-top: .1px solid #1C1C1C;
+            padding: 10px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .modal-button {
+            background: #d04040;
+            backdrop-filter: blur(25px);
+            border-radius: 7px;
+            opacity: .9;
+            box-shadow: 0 15px 24px -10px #00000055,inset 0 .2px 0 1.1px #ffffff29;
+            width: 100%;
+            margin: 5px;
+            height: 80%;
+            position: relative;
+            outline: none;
+            font-size: 15px;
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+            color: white;
+            transition: all .2s;
+        }
+
+        .modal-button:hover {
+            background: #e44444;
+        }
+
+        .modal-button:active {
+            scale: 0.9;
+            background: #7c2929;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <button id="button">click</button>
+
+    <div class="stuff">
+
+    <div class="modal" modal_body="" dialog_body="" id="1">
+        <span>
+            <b>Alert</b>
+            <br>
+            <span>This is a test so im going to keep writing until i have enough characters to fit this box, i made this and i like it. Its pretty cool right? please say yes, i spent quite awhile on this and i really like it.</span>
+        </span>
+
+        <div dialog_bottom="">
+            <button class="modal-button" ls="" ls-blue="" id="2">OK</button>
+        </div>
+    </div>
+
+    </div>
+
+    <script>
+
+        var button = document.getElementById("2");
+        var modal = document.getElementById("1");
+        var openButton = document.getElementById("button");
+
+        button.addEventListener("click", function() {
+            modal.style.scale = "1.5";
+            modal.style.opacity = "0";
+            modal.style.zIndex = "-1";
+            document.body.style.backgroundColor = "#1e1e1e";
+        })
+
+        openButton.addEventListener("click", function() {
+            modal.style.scale = "1";
+            modal.style.opacity = "1";
+            modal.style.zIndex = "1";
+            document.body.style.backgroundColor = "#141414";
+        })
+
+    </script>
+    
+</body>
+</html>
