@@ -33,12 +33,7 @@
             width: 100%;
             justify-content: center;
             align-items: center;
-            z-index: 1;
-        }
-
-        #button {
-            z-index: 9999999;
-            position: relative;
+            z-index: 9;
         }
 
         .modal {
@@ -62,7 +57,7 @@
             z-index: -1;
         }
 
-        [dialog_bottom] {
+        .dialog-bottom {
             height: 50px;
             position: absolute;
             bottom: 0;
@@ -104,6 +99,16 @@
             background: #7c2929;
         }
 
+        .backdrop {
+            height: 100%;
+            width: 100%;
+            background-color: rgba(20, 20, 20, 0.3);
+            opacity: 0;
+            position: absolute;
+            z-index: -1;
+            transition: all .2s;
+        }
+
     </style>
 
 </head>
@@ -111,16 +116,16 @@
 
     <button id="button">click</button>
 
-    <div class="stuff">
+    <div class="stuff backdrop" id="backdrop">
 
-    <div class="modal" modal_body="" dialog_body="" id="1">
+    <div class="modal" id="1">
         <span>
             <b>Alert</b>
             <br>
             <span>This is a test so im going to keep writing until i have enough characters to fit this box, i made this and i like it. Its pretty cool right? please say yes, i spent quite awhile on this and i really like it.</span>
         </span>
 
-        <div dialog_bottom="">
+        <div class="dialog-bottom">
             <button class="modal-button" ls="" ls-blue="" id="2">OK</button>
         </div>
     </div>
@@ -132,19 +137,22 @@
         var button = document.getElementById("2");
         var modal = document.getElementById("1");
         var openButton = document.getElementById("button");
+        var backdrop = document.getElementById("backdrop");
 
         button.addEventListener("click", function() {
             modal.style.scale = "1.5";
             modal.style.opacity = "0";
             modal.style.zIndex = "-1";
-            document.body.style.backgroundColor = "#1e1e1e";
+            backdrop.style.zIndex = "-1";
+            backdrop.style.opacity = "0";
         })
 
         openButton.addEventListener("click", function() {
             modal.style.scale = "1";
             modal.style.opacity = "1";
-            modal.style.zIndex = "1";
-            document.body.style.backgroundColor = "#141414";
+            modal.style.zIndex = "9";
+            backdrop.style.zIndex = "6";
+            backdrop.style.opacity = "1";
         })
 
     </script>
